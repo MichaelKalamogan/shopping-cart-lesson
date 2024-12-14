@@ -6,13 +6,14 @@ import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header";
 
+const databaseUrl = `${import.meta.env.VITE_SHOPPING_URL}`;
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://dummyjson.com/products");
+      const res = await fetch(databaseUrl);
       const { products } = await res.json();
       setProducts(products);
     };
